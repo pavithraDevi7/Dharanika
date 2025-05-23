@@ -4,7 +4,7 @@ from django.db import models
 class student(models.Model):
     name=models.CharField(max_length=50)
     roll_number=models.IntegerField()
-    Email=models.EmailField()
+    email=models.EmailField()
 
 
     def __str__(self):
