@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<div class="container">
+    <h2>add student</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <input type="char=" name= "dept" placeholder="Dept" required><br>
+        <input type="number" name="age" placeholder="Age" required><br>
+        <input type="char" name="gender"placeholder="Gender"required><br>
+        <!--<input type="number" name="mobile_no"placeholder="mobile_no"required><br>-->
+        <input type="char" name="stram"placeholder="Stream"required><br>
+        <button type="submit">Submit</button>
+
+           <h3>Student List</h3>
+        <ul>
+            {% for biodata in biodatas %}
+                <li>{{ biodata.dept}} - {{ biodata.age }} - {{ biodata.gender }} - {{ biodata.mobile_no}} - {{biodata.stream}}</li>
+            {% empty %}
+                <li>No biodatas yet.</li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
+        
+
+
+    

@@ -4,7 +4,8 @@ from.views import *
 
 urlpatterns=[
     path('home/',homepage),
-    path('student_form/',student_form, name='student_form'),
-    path('signup_view/',signup_view, name='signup_view'),
-    path('login_view/',login_view, name='login_view'),
+    path('students_form/',students_form, name='students_form'),
+    path('signup_view/',signup_view, name='signup'),
+    path('login_view/',login_view, name='login'),
+    path('student_biodata/',student_biodata, name='student_biodata'),
 ]
