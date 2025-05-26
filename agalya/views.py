@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect,get_object_or_404
 from .models import *
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
@@ -70,3 +70,26 @@ def student_biodata(request):
      return redirect('student_biodata')
   biodatas = biodata.objects.all()
   return render(request, 'biodata.html', {'biodatas':biodatas})
+
+
+def edit_biodatas(request, pk):
+    biodatas = get_object_or_404(biodata, pk=pk)
+
+    if request.method == "POST":
+        biodatas.title = request.POST.get("title")
+        biodatas.description = request.POST.get("description")
+        biodatas.credits = request.POST.get("credits")
+        biodatas.save()
+        return redirect("edit_biodatas")
+
+    return render(request, "edit.html", {
+        "edit_biodata": biodata,
+        "biodatas": biodatas.objects.all()
+    })
+
+
+def delete_biodatas(request, pk):
+    biodatas = get_object_or_404(biodata, pk=pk)
+    biodatas.delete()
+    return redirect("delete_biodatas")
+    
